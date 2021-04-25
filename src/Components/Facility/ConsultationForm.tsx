@@ -17,6 +17,7 @@ import React, { useCallback, useReducer, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   ADMITTED_TO,
+  BED_ADMITTED_TO,
   CONSULTATION_SUGGESTION,
   PATIENT_CATEGORY,
   SYMPTOM_CHOICES,
@@ -43,6 +44,8 @@ import {
 import { make as PrescriptionBuilder } from "../Common/PrescriptionBuilder.gen";
 import { FacilityModel } from "./models";
 import { OnlineDoctorsSelect } from "../Common/OnlineDoctorsSelect";
+import { values } from 'lodash';
+
 
 const Loading = loadable(() => import("../Common/Loading"));
 const PageTitle = loadable(() => import("../Common/PageTitle"));
@@ -58,6 +61,7 @@ const initForm: any = {
   facility: "",
   admitted: "false",
   admitted_to: "",
+  admitted_to_supportive_utility: "",
   category: "",
   admission_date: new Date(),
   discharge_date: null,
@@ -115,6 +119,7 @@ const suggestionTypes = [
 const symptomChoices = [...SYMPTOM_CHOICES];
 
 const admittedToChoices = ["Select", ...ADMITTED_TO];
+const bedAdmittedToChoices = ["Select", ...Object.keys(BED_ADMITTED_TO)]
 
 const categoryChoices = [
   {
@@ -168,6 +173,7 @@ export const ConsultationForm = (props: any) => {
               !!res.data.symptoms.filter((i: number) => i === 9).length,
             admitted: res.data.admitted ? String(res.data.admitted) : "false",
             admitted_to: res.data.admitted_to ? res.data.admitted_to : "",
+            admitted_to_supportive_utility: res.data.admitted_to_supportive_utility ? res.data.admitted_to_supportive_utility : "",
             category: res.data.category ? res.data.category : "",
             ip_no: res.data.ip_no ? res.data.ip_no : "",
             test_id: res.data.test_id ? res.data.test_id : "",
@@ -232,6 +238,7 @@ export const ConsultationForm = (props: any) => {
           }
           return;
         case "admitted_to":
+        case "admitted_to_supportive_utility":
         case "admission_date":
           if (JSON.parse(state.form.admitted) && !state.form[field]) {
             errors[field] = "Field is required as person is admitted";
@@ -559,15 +566,36 @@ export const ConsultationForm = (props: any) => {
                         name="admitted_to"
                         variant="standard"
                         value={state.form.admitted_to}
-                        options={admittedToChoices}
+                        options={bedAdmittedToChoices}
                         onChange={handleChange}
                         label="Admitted To*"
                         labelId="admitted-to-label"
                         errors={state.errors.admitted_to}
                       />
+
                     </div>
                   )}
+
+                {JSON.parse(state.form.admitted) && state.form.admitted_to && (
+                    <div className="flex-1">
+                      <SelectField
+                        optionArray={true}
+                        name="admitted_to"
+                        variant="standard"
+                        value={state.form.admitted_to_supportive_utility}
+                        options={BED_ADMITTED_TO[state.form.admitted_to]}
+                        onChange={handleChange}
+                        label="Admitted To*"
+                        labelId="admitted-to-label"
+                        errors={state.errors.admitted_to}
+                      />
+
+                    </div>
+                  )}
+
                 </div>
+
+
 
                 {JSON.parse(state.form.admitted) && (
                   <div className="flex">

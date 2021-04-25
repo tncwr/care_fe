@@ -229,6 +229,15 @@ export const ADMITTED_TO = [
   "Paediatric Ward",
 ];
 
+
+export const BED_ADMITTED_TO: any={
+  "Home Isolation":["None", "Oxygen Concentrator"],
+  "Isolation Ward":["None", "Oxygen Concentrator",  "BiPAP", "CPAP"],
+  "Isolation Room":["None", "Oxygen Concentrator",  "BiPAP", "CPAP"],
+  "Oxygen Bed":["None", "NRBM","BiPAP", "CPAP", "HFNC"],
+  "ICU":["None", "Oxygen Concentrator",  "BiPAP", "CPAP", "Invasive Ventilator", "NRBM", "HFNC"],
+};
+
 export const PATIENT_FILTER_ADMITTED_TO = [
   { id: "0", text: "Not admitted" },
   { id: "1", text: "Isolation Room" },

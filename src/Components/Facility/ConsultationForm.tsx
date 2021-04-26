@@ -118,8 +118,7 @@ const suggestionTypes = [
 
 const symptomChoices = [...SYMPTOM_CHOICES];
 
-const admittedToChoices = ["Select", ...ADMITTED_TO];
-const bedAdmittedToChoices = ["Select", ...Object.keys(BED_ADMITTED_TO)]
+const admittedToChoices = ["Select", ...Object.keys(BED_ADMITTED_TO)]
 
 const categoryChoices = [
   {
@@ -214,7 +213,7 @@ export const ConsultationForm = (props: any) => {
           }
           return;
         case "category":
-          if (!state.form[field] || !state.form[field].length) {
+          if (!state.form[field] || !state.form[field].length || state.form[field] === "0") {
             errors[field] = "Please select the category";
             invalidForm = true;
           }
@@ -239,6 +238,11 @@ export const ConsultationForm = (props: any) => {
           return;
         case "admitted_to":
         case "admitted_to_supportive_utility":
+          if (JSON.parse(state.form.admitted) && (!state.form[field] || state.form[field] === "Select")) {
+            errors[field] = "Field is required as person is admitted";
+            invalidForm = true;
+          }
+          return;
         case "admission_date":
           if (JSON.parse(state.form.admitted) && !state.form[field]) {
             errors[field] = "Field is required as person is admitted";
@@ -282,6 +286,7 @@ export const ConsultationForm = (props: any) => {
         suggestion: state.form.suggestion,
         admitted: JSON.parse(state.form.admitted),
         admitted_to: JSON.parse(state.form.admitted) ? state.form.admitted_to : undefined,
+        admitted_to_supportive_utility: JSON.parse(state.form.admitted) && state.form.admitted_to ? state.form.admitted_to_supportive_utility : undefined,
         admission_date: JSON.parse(state.form.admitted) ? state.form.admission_date : undefined,
         category: state.form.category,
         examination_details: state.form.examination_details,
@@ -566,36 +571,31 @@ export const ConsultationForm = (props: any) => {
                         name="admitted_to"
                         variant="standard"
                         value={state.form.admitted_to}
-                        options={bedAdmittedToChoices}
+                        options={admittedToChoices}
                         onChange={handleChange}
                         label="Admitted To*"
                         labelId="admitted-to-label"
                         errors={state.errors.admitted_to}
                       />
-
-                    </div>
-                  )}
-
-                {JSON.parse(state.form.admitted) && state.form.admitted_to && (
+                  {state.form.admitted_to && state.form.admitted_to !== "Select" &&  (
                     <div className="flex-1">
                       <SelectField
                         optionArray={true}
-                        name="admitted_to"
+                        name="admitted_to_supportive_utility"
                         variant="standard"
                         value={state.form.admitted_to_supportive_utility}
-                        options={BED_ADMITTED_TO[state.form.admitted_to]}
+                        options={["Select", ...BED_ADMITTED_TO[state.form.admitted_to]]}
                         onChange={handleChange}
-                        label="Admitted To*"
-                        labelId="admitted-to-label"
-                        errors={state.errors.admitted_to}
+                        label="Select Supportive Utility Used"
+                        labelId="admitted-to-supportive-utility-label"
+                        errors={state.errors.admitted_to_supportive_utility}
                       />
 
                     </div>
                   )}
-
+                    </div>
+                  )}
                 </div>
-
-
 
                 {JSON.parse(state.form.admitted) && (
                   <div className="flex">

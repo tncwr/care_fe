@@ -650,7 +650,7 @@ export const PatientHome = (props: any) => {
             </div>
           </div>
         )}
-        <section className="md:flex items-center mt-4 space-y-2">
+        <section className="md:flex items-center mt-4 space-y-2" data-testid="patient-dashboard">
           <div className="md:w-2/3 mx-2 h-full">
             <div className="bg-white rounded-lg shadow p-4 h-full">
               <h1 className="font-bold text-3xl">
@@ -902,7 +902,6 @@ export const PatientHome = (props: any) => {
                     <button
                       className="btn btn-primary w-full"
                       name="death_report"
-                      disabled={!patientData.is_active}
                       onClick={() => navigate(`/death_report/${id}`)}
                     >
                       <i className="fas fa-file-download mr-2" />

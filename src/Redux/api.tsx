@@ -239,6 +239,16 @@ export default {
     path: "/api/v1/facility/{facilityId}/patient_stats/{id}/",
   },
 
+  // Assets
+  getLocations: {
+    path: "/api/v1/facility/{facilityId}/asset_location/",
+  },
+
+  createAsset: {
+    path: "/api/v1/asset/",
+    method: "POST",
+  },
+
   // //Care Center
   // createCenter: {
   //     path: "/api/v1/carecenter/",
@@ -274,11 +284,11 @@ export default {
   },
   getPatientNotes: {
     path: "/api/v1/patient/{patientId}/notes/",
-    method: "GET"
+    method: "GET",
   },
   addPatientNote: {
     path: "/api/v1/patient/{patientId}/notes/",
-    method: "POST"
+    method: "POST",
   },
   sampleTestList: {
     path: "/api/v1/patient/{patientId}/test_sample/",

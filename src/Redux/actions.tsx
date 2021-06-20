@@ -77,6 +77,14 @@ export const getFacilityUsers = (id: string) => {
 export const getOnlineDoctors = () => {
   return fireRequest("getOnlineDoctors", [], {}, {});
 };
+export const getLocations = (id: string) => {
+  return fireRequest("getLocations", [], {}, { facilityId: id });
+};
+// Asset Actions
+export const createAsset = (params: object) => {
+  return fireRequest("createAsset", [], params);
+};
+
 // Download Actions
 export const downloadFacility = () => {
   return fireRequest("downloadFacility");
@@ -382,7 +390,6 @@ export const getNotificationData = (pathParam: object) => {
 export const getPublicKey = () => {
   return fireRequest("getPublicKey", [], {}, {});
 };
-
 
 // FileUpload
 

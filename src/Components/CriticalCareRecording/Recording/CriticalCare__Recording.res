@@ -18,6 +18,7 @@ type state = {
   abgEditor: ABGAnalysis.t,
   neurologicalMonitoring: NeurologicalMonitoring.t,
   hemodynamic_parameter_editor: CriticalCare__HemodynamicParameters.t,
+  ventilatorParametersEditor: CriticalCare__VentilatorParameters.t,
   neurologicalMonitoringStatus: string,
   hemodynamicParametersStatus: string,
   ventilatorParametersStatus: string,
@@ -37,6 +38,7 @@ type action =
   | SetNursingCare(NursingCare.t)
   | SetNeurologicalMonitoring(NeurologicalMonitoring.t)
   | SetHemodynamicParametersEditor(CriticalCare__HemodynamicParameters.t)
+  | SetVentilatorParametersEditor(CriticalCare__VentilatorParameters.t)
   | UpdateNursingCareStatus(string)
   | UpdateTotal(int)
 
@@ -92,6 +94,7 @@ let reducer = (state, action) => {
       neurologicalMonitoring: neurologicalMonitoring,
     }
   | SetHemodynamicParametersEditor(editor) => {...state, hemodynamic_parameter_editor: editor}
+  | SetVentilatorParametersEditor(editor) => {...state, ventilatorParametersEditor: editor}
   | UpdateNursingCareStatus(nursingCareStatus) => {
       ...state,
       nursingCareStatus: nursingCareStatus,
@@ -154,6 +157,48 @@ let initialState = {
     rhythm: None,
     description: "",
   },
+  ventilatorParametersEditor: {
+    ventilationInterface: "",
+    iv:{
+      ventilatorMode: "",
+      ventilatorModeSubOption: {
+        cmv:"",
+        simv:"",
+        psv:""
+      },
+      peep:"",
+      peakInspiratoryPressure:"",
+      meanAirwayPressure:"",
+      respiratoryRateVentilator:"",
+      tidalVolume:"",
+      fio2:"",
+      spo2:"",
+    },
+    niv:{
+      ventilatorMode: "",
+      ventilatorModeSubOption: {
+        cmv:"",
+        simv:"",
+        psv:""
+      },
+      peep:"",
+      peakInspiratoryPressure:"",
+      meanAirwayPressure:"",
+      respiratoryRateVentilator:"",
+      tidalVolume:"",
+
+      fio2:"",
+      spo2:"",
+    },
+    none:{
+      nasalProngs:Some(""),
+      simpleFaceMask:Some(""),
+      nonRebreathingMask:false,
+      highFlowNasalCannula:false,
+      fio2:"",
+      spo2:"",
+    }
+  },
   neurologicalMonitoringStatus: "0",
   hemodynamicParametersStatus: "0",
   ventilatorParametersStatus: "0",
@@ -207,7 +252,14 @@ export make = () => {
                 send(CloseEditor)
               }}
             />
-          | VentilatorParametersEditor => <CriticalCare__VentilatorParametersEditor />
+          | VentilatorParametersEditor =>
+            <CriticalCare__VentilatorParametersEditor
+              initialState={state.ventilatorParametersEditor}
+              handleDone={(data, status) => {
+                send(SetVentilatorParametersEditor(data))
+                send(CloseEditor)
+              }}
+            />
           | ArterialBloodGasAnalysisEditor =>
             <CriticalCare__ABGAnalysisEditor
               initialState={state.abgEditor}

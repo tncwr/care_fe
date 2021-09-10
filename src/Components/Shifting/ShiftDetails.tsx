@@ -377,10 +377,7 @@ export default function ShiftDetails(props: { id: string }) {
       <div id="section-to-print" className="print bg-white ">
         <div>
           {data.is_kasp && (
-            <img
-              alt="logo"
-              src="https://cdn.coronasafe.network/header_logo.png"
-            />
+            <img alt="logo" src="https://cdn.tncwr.in/Header.png" />
           )}
         </div>
         <div className="mx-20 p-4">

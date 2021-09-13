@@ -34,8 +34,8 @@ const SessionRouter = (props: any) => {
         <div className="max-w-5xl mx-auto flex md:flex-row flex-col p-4 f-full items-center">
           <div className="mx-auto p-2">
             <img
-              className="h-20"
-              src="https://cdn.coronasafe.network/ksdma_logo.webp"
+              className="h-24"
+              src="https://cdn.tncwr.in/NHMTamilLogo.png"
               alt="Care Logo"
             />
           </div>

@@ -99,18 +99,28 @@ const LoginPage = (props: any) => {
       <div className="absolute top-2 right-2">
         <LanguageSelector className="md:bg-primary-500 md:text-white bg-white" />
       </div>
-      <div className="flex flex-col justify-center h-1/2 md:w-1/2 md:h-full bg-primary-500">
-        <div className="pl-1/5">
-          <a href={"/"}>
+      <div className="flex flex-col justify-center items-center p-2 h-1/2 md:w-1/2 md:h-full bg-yellow-200">
+        <div>
+          <a href="/">
             <img
-              src="https://cdn.coronasafe.network/light-logo.svg"
-              className="h-8 w-auto"
+              src="https://cdn.tncwr.in/TncovidWarRoom.png"
+              className="my-auto max-h-36"
               alt="care logo"
-            />{" "}
+            />
           </a>
         </div>
-        <div className="mt-4 md:mt-20 rounded-lg px-1/5 py-4">
-          <PublicDashboard />
+        <div className="mt-4 md:mt-20 rounded-lg py-4">
+          <div className="max-w-lg">
+            <h1 className="text-center md:text-left text-3xl md:text-4xl xl:text-5xl tracking-tight font-bold text-black leading-tight">
+              CoronaSafe Care
+            </h1>
+            <h3 className="text-center md:text-left">
+              Centralised Resource Management Platform
+            </h3>
+            <div className="text-base md:text-2xl lg:text-2xl pt-6 max-w-xl text-black pl-1 hidden">
+              Centralised Resource Management Platform
+            </div>
+          </div>
         </div>
       </div>
 

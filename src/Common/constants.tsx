@@ -9,8 +9,9 @@ export interface OptionsType {
   disabled?: boolean;
 }
 
-export const KASP_STRING = "KASP";
-export const KASP_FULL_STRING = "Karunya Arogya Suraksha Padhathi";
+export const KASP_STRING = "CMCHIS";
+export const KASP_FULL_STRING =
+  "Chief Minister comprehensive health insurance scheme";
 
 export const USER_TYPES: Array<String> = [
   "Volunteer",

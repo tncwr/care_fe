@@ -32,10 +32,14 @@ export interface UCCBedRequestData {
   Asthma: number;
   Chronic_Kidney_Disease: number;
   CT1: number;
-  InsertDate: "2022-01-02T14:14:29.470000+05:30";
+  InsertDate: Date;
   priority_status: number;
   BedAllotmentStatus: number;
   TriageID: number;
+  PriorityDate: Date;
+  ReferenceID: number;
+  TB: number;
+  PriorityRemarks: string;
 }
 
 export interface UCCBedRequestResponse {

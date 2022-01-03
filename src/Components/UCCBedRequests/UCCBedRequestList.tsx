@@ -16,6 +16,12 @@ import { InputSearchBox } from "../Common/SearchBox";
 //import AssetFilter from "./AssetFilter";
 import { FacilityModel } from "../Facility/models";
 import AdvancedFilterButton from "../Common/AdvancedFilterButton";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableHead from "@material-ui/core/TableHead";
+import TableCell from "@material-ui/core/TableCell";
+import TableRow from "@material-ui/core/TableRow";
+import CSS from "csstype";
 
 const Loading = loadable(() => import("../Common/Loading"));
 
@@ -108,64 +114,48 @@ const UCCBedRequestsList = (props: any) => {
     setShowFilters(false);
   };
 
+  const lineSpace: CSS.Properties = {
+    marginBottom: "5px",
+  };
+
+  const BedType = [
+    "ICU",
+    "Ventilator Bed",
+    "O2 Bed",
+    "Non O2 Bed",
+    "CCC",
+    "Icu Bed with Ventilator",
+    "Any Of The Above",
+  ];
+  const RquiredHospitalType = [
+    "GOVERMENT_HOSPITAL",
+    "PRIVATE_HOSPITAL",
+    "ANY",
+  ] as const;
+  const HospitalType = [
+    "Home",
+    "Hospital",
+    "Triage Facility",
+    "Transit/Ambulance",
+  ] as const;
+
   if (isLoading) return <Loading />;
-  if (isScannerActive)
-    return (
-      <div className="md:w-1/2 w-full my-2 mx-auto flex flex-col justify-start items-end">
-        <button
-          onClick={() => setIsScannerActive(false)}
-          className="btn btn-default mb-2"
-        >
-          <i className="fas fa-times mr-2"></i> Close Scanner
-        </button>
-        <QrReader
-          delay={300}
-          onScan={(bccId: any) =>
-            bccId ? navigate(`/ucc_bed_request/${bccId}`) : null
-          }
-          onError={(e: any) =>
-            Notification.Error({
-              msg: e.message,
-            })
-          }
-          style={{ width: "100%" }}
-        />
-        <h2 className="text-center text-lg self-center">Scan Asset QR!</h2>
-      </div>
-    );
 
   return (
     <div className="px-4 pb-2">
-      <PageTitle title="Assets" hideBack={true} />
+      <PageTitle title="UCC Bed Requests" hideBack={true} />
       <div className="md:flex mt-5 space-y-2">
         <div className="bg-white overflow-hidden shadow rounded-lg flex-1 md:mr-2">
           <div className="px-4 py-5 sm:p-6">
             <dl>
               <dt className="text-sm leading-5 font-medium text-gray-500 truncate">
-                Total Assets
+                Total Bed Requests
               </dt>
               <dd className="mt-4 text-5xl leading-9 font-semibold text-gray-900">
                 {totalCount}
               </dd>
             </dl>
           </div>
-        </div>
-        <div className="flex-1">
-          <InputSearchBox
-            value={qParams.search}
-            search={onSearchSuspects}
-            placeholder="Search by Asset Name"
-            errors=""
-          />
-        </div>
-        <div className="flex-1 flex flex-col justify-start items-end">
-          <AdvancedFilterButton setShowFilters={setShowFilters} />
-          <button
-            className="btn btn-primary"
-            onClick={() => setIsScannerActive(true)}
-          >
-            <i className="fas fa-search mr-1"></i> Scan Asset QR
-          </button>
         </div>
       </div>
       <div></div>
@@ -178,56 +168,119 @@ const UCCBedRequestsList = (props: any) => {
       </div>
       <div className="flex-grow mt-10 bg-white">
         <div className="p-8">
-          <div className="flex flex-wrap md:-mx-4">
-            {uccBedRequestsExist ? (
-              ucc_bed_requests.map((ucc_bed_request: UCCBedRequestData) => (
-                <div
-                  key={ucc_bed_request.id}
-                  className="w-full pb-2 cursor-pointer border-b md:flex justify-between items-center mb-3"
-                  onClick={() =>
-                    navigate(`/ucc-bed-request/${ucc_bed_request.id}`)
-                  }
-                >
-                  <div className="px-4 md:w-1/2">
-                    <div className="md:flex justify-between w-full">
-                      <p className="text-xl font-normal capitalize">
-                        {ucc_bed_request.Name}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="md:flex">
-                    <div className="md:flex flex-wrap justify-end">
-                      {ucc_bed_request.BedAllotmentStatus ? (
-                        <Badge color="green" icon="cog" text="Working" />
-                      ) : (
-                        <Badge color="red" icon="cog" text="Not Working" />
-                      )}
-                      <Badge
-                        color="blue"
-                        icon="location-arrow"
-                        text={ucc_bed_request.HospitalName}
-                      />
-                    </div>
-                    <div className="px-2">
-                      <div
-                        onClick={() =>
-                          navigate(`/assets/${ucc_bed_request.id}`)
-                        }
-                        className="btn btn-default bg-white"
-                      >
-                        Details
+          <div
+            className="flex flex-wrap md:-mx-4"
+            style={{ height: "auto", overflow: "auto" }}
+          >
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Ref No</TableCell>
+                  <TableCell>Action</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Mobile</TableCell>
+                  <TableCell>Priority Updation DateTime</TableCell>
+                  <TableCell>Hospital Type</TableCell>
+                  <TableCell>Bed Type</TableCell>
+                  <TableCell>Age/Gender</TableCell>
+                  <TableCell>Address</TableCell>
+                  <TableCell>SPo2</TableCell>
+                  <TableCell>Pulse</TableCell>
+                  <TableCell>O2 Support</TableCell>
+                  <TableCell>RR</TableCell>
+                  <TableCell>CT Score</TableCell>
+                  <TableCell>Asthma</TableCell>
+                  <TableCell>Chronic Kidney Disease</TableCell>
+                  <TableCell>Hospital Name</TableCell>
+                  <TableCell>RT-PCR</TableCell>
+                  <TableCell>Remarks</TableCell>
+                  <TableCell>Counseling Required</TableCell>
+                  <TableCell>Type Of Hospital Requested</TableCell>
+                  <TableCell>fever</TableCell>
+                  <TableCell>DM</TableCell>
+                  <TableCell>HT</TableCell>
+                  <TableCell>IHD</TableCell>
+                  <TableCell>TB</TableCell>
+                  <TableCell>Priority Case</TableCell>
+                  <TableCell>Priority Case Remarks</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {uccBedRequestsExist ? (
+                  ucc_bed_requests.map((ucc_bed_request: UCCBedRequestData) => (
+                    <TableRow>
+                      <TableCell>{ucc_bed_request.ReferenceID}</TableCell>
+                      <TableCell>
+                        <div className="px-2">
+                          <div style={lineSpace}>
+                            <button className="btn btn-primary">
+                              Bed Allotment
+                            </button>
+                          </div>
+                          <div>
+                            <button className="btn btn-primary">
+                              Rejected
+                            </button>
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell>{ucc_bed_request.Name}</TableCell>
+                      <TableCell>{ucc_bed_request.Mobile}</TableCell>
+                      <TableCell>{ucc_bed_request.PriorityDate}</TableCell>
+                      <TableCell>
+                        {HospitalType[ucc_bed_request.HomeorHsptl]}
+                      </TableCell>
+                      <TableCell>{ucc_bed_request.TypeOfBedReq}</TableCell>
+                      <TableCell>
+                        {ucc_bed_request.Age}/{ucc_bed_request.Gender}
+                      </TableCell>
+                      <TableCell>{ucc_bed_request.Address}</TableCell>
+                      <TableCell>{ucc_bed_request.SpO2}</TableCell>
+                      <TableCell>{ucc_bed_request.PR}</TableCell>
+                      <TableCell>{ucc_bed_request.O2}</TableCell>
+                      <TableCell>{ucc_bed_request.RR}</TableCell>
+                      <TableCell>{ucc_bed_request.CT1}</TableCell>
+                      <TableCell>
+                        {ucc_bed_request.Asthma ? "Yes" : "No"}
+                      </TableCell>
+                      <TableCell>
+                        {ucc_bed_request.Chronic_Kidney_Disease ? "Yes" : "No"}
+                      </TableCell>
+                      <TableCell>{ucc_bed_request.HospitalName}</TableCell>
+                      <TableCell>{ucc_bed_request.CT}</TableCell>
+                      <TableCell>{ucc_bed_request.Remarks}</TableCell>
+                      <TableCell>
+                        {ucc_bed_request.Counseling_Required ? "Yes" : "No"}
+                      </TableCell>
+                      <TableCell>
+                        {RquiredHospitalType[ucc_bed_request.Bed]}
+                      </TableCell>
+                      <TableCell>
+                        {ucc_bed_request.fever ? "Yes" : "No"}
+                      </TableCell>
+                      <TableCell>{ucc_bed_request.DM ? "Yes" : "No"}</TableCell>
+                      <TableCell>{ucc_bed_request.HT ? "Yes" : "No"}</TableCell>
+                      <TableCell>
+                        {ucc_bed_request.IHD ? "Yes" : "No"}
+                      </TableCell>
+                      <TableCell>{ucc_bed_request.TB ? "Yes" : "No"}</TableCell>
+                      <TableCell>{ucc_bed_request.priority_status}</TableCell>
+                      <TableCell>{ucc_bed_request.PriorityRemarks}</TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={10}>
+                      <div className="w-full pb-2 cursor-pointer mb-3">
+                        <p className="text-xl font-bold capitalize text-center">
+                          No UCC Bed Requests Found
+                        </p>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="w-full pb-2 cursor-pointer mb-3">
-                <p className="text-xl font-bold capitalize text-center">
-                  No Assets Found
-                </p>
-              </div>
-            )}
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
             {totalCount > limit && (
               <div className="mt-4 flex w-full justify-center">
                 <Pagination

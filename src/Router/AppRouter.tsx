@@ -58,6 +58,8 @@ import { LocationManagement } from "../Components/Facility/LocationManagement";
 import AssetsList from "../Components/Assets/AssetsList";
 import AssetManage from "../Components/Assets/AssetManage";
 import { DailyRoundListDetails } from "../Components/Patient/DailyRoundListDetails";
+import UCCBedRequestsList from "../Components/UCCBedRequests/UCCBedRequestList";
+import UCCBedRequestManage from "../Components/UCCBedRequests/UCCBedRequestManage";
 
 const get = require("lodash.get");
 const img = "https://cdn.coronasafe.network/light-logo.svg";
@@ -292,6 +294,10 @@ const routes = {
   ),
   "/assets": () => <AssetsList />,
   "/assets/:assetId": ({ assetId }: any) => <AssetManage assetId={assetId} />,
+  "/ucc-bed-request": () => <UCCBedRequestsList />,
+  "/ucc-bed-request/:uccId": ({ uccId }: any) => (
+    <UCCBedRequestManage uccId={uccId} />
+  ),
 
   "/shifting": () =>
     localStorage.getItem("defaultShiftView") === "list" ? (
@@ -398,6 +404,11 @@ let menus = [
     title: "Notice Board",
     link: "/notice_board/",
     icon: "fas fa-comment-alt",
+  },
+  {
+    title: "UCC Bed Requests",
+    link: "/ucc-bed-request",
+    icon: "fas fa-shopping-cart",
   },
 ];
 

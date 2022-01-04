@@ -567,3 +567,13 @@ export const listAssetTransaction = (params: object) =>
   fireRequest("listAssetTransaction", [], params);
 export const getAssetTransaction = (id: string) =>
   fireRequest("getAssetTransaction", [], {}, { id });
+
+// UCC Bed Request
+
+export const viewBedRequests = (params: object) => {
+  return fireRequest("viewBedRequests", [], params);
+};
+
+export const retrieveBedRequest = (uccId: number) => {
+  return fireRequest("retrieveBedRequest", [], {}, { id: uccId });
+};

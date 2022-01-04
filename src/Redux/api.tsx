@@ -649,6 +649,16 @@ const routes: Routes = {
     path: "/api/v1/asset_transaction/{id}",
     method: "GET",
   },
+
+  // UCC Bed Request Endpoints
+  viewBedRequests: {
+    path: "/api/v1/ucc_bed_request/",
+    method: "GET",
+  },
+  retrieveBedRequest: {
+    path: "/api/v1/ucc_bed_request/{id}/",
+    method: "GET",
+  },
 };
 
 export default routes;

@@ -152,6 +152,10 @@ export const BED_TYPES: Array<OptionsType> = [
   { id: 70, text: KASP_STRING + " ICU (ICU with ventilator)" },
   { id: 2, text: "Hostel" },
   { id: 3, text: "Single Room with Attached Bathroom" },
+  { id: 111, text: "Pediatric Covid Ordinary Beds" },
+  { id: 112, text: "Pediatric Covid Oxygen beds" },
+  { id: 113, text: "Pediatric Covid ICU (ICU without ventilator)" },
+  { id: 114, text: "Pediatric Covid Ventilators (ICU with ventilator)" },
 ];
 
 export const DOCTOR_SPECIALIZATION: Array<OptionsType> = [

@@ -34,7 +34,7 @@ export const ExternalResultLocalbodySelector = (props: any) => {
         </label>
 
         <div className="md:col-span-2">
-          <InputLabel id="local_body-label">Localbody*</InputLabel>
+          <InputLabel id="local_body-label">Village / Town*</InputLabel>
           <SelectField
             name="local_body"
             variant="outlined"
@@ -48,7 +48,7 @@ export const ExternalResultLocalbodySelector = (props: any) => {
           />
         </div>
         <div className="md:col-span-2">
-          <InputLabel id="ward-label">Ward*</InputLabel>
+          <InputLabel id="ward-label">Street*</InputLabel>
           {wards && (
             <SelectField
               name="ward"

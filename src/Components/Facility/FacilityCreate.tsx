@@ -56,12 +56,12 @@ const facilityTypes = [...FACILITY_TYPES.map((i) => i.text)];
 const initialStates = [{ id: 0, name: "Choose State *" }];
 const initialDistricts = [{ id: 0, name: "Choose District" }];
 const selectStates = [{ id: 0, name: "Please select your state" }];
-const initialLocalbodies = [{ id: 0, name: "Choose Localbody" }];
+const initialLocalbodies = [{ id: 0, name: "Choose Village / Town" }];
 const selectDistrict = [{ id: 0, name: "Please select your district" }];
 const selectLocalBody = [
-  { id: 0, name: "Please select your Local Body", number: 0 },
+  { id: 0, name: "Please select your Village / Town", number: 0 },
 ];
-const initialWards = [{ id: 0, name: "Choose Ward", number: 0 }];
+const initialWards = [{ id: 0, name: "Choose Street", number: 0 }];
 
 const initForm: any = {
   facility_type: "2",
@@ -534,7 +534,7 @@ export const FacilityCreate = (props: FacilityProps) => {
               </div>
 
               <div className="md:col-span-2">
-                <InputLabel id="local_body-label">Localbody*</InputLabel>
+                <InputLabel id="local_body-label">Village / Town*</InputLabel>
                 {isLocalbodyLoading ? (
                   <CircularProgress size={20} />
                 ) : (
@@ -555,7 +555,7 @@ export const FacilityCreate = (props: FacilityProps) => {
                 )}
               </div>
               <div className="md:col-span-2">
-                <InputLabel id="ward-label">Ward*</InputLabel>
+                <InputLabel id="ward-label">Street*</InputLabel>
                 {isWardLoading ? (
                   <CircularProgress size={20} />
                 ) : (

@@ -37,9 +37,9 @@ export const DOWNLOAD_TYPES: Array<String> = [
 ];
 
 export const TEST_TYPE_CHOICES: Array<OptionsType> = [
+  { id: 30, text: "RTPCR" },
   { id: 10, text: "UNK" },
   { id: 20, text: "ANTIGEN" },
-  { id: 30, text: "RTPCR" },
   { id: 40, text: "CBNAAT" },
   { id: 50, text: "TRUENAT" },
 ];
@@ -170,11 +170,11 @@ export const MEDICAL_HISTORY_CHOICES: Array<OptionsType> = [
   { id: 1, text: "NO" },
   { id: 2, text: "Diabetes" },
   { id: 3, text: "Heart Disease" },
-  { id: 4, text: "HyperTension" },
+  { id: 4, text: "Hypertension" },
   { id: 5, text: "Kidney Diseases" },
   { id: 6, text: "Lung Diseases/Asthma" },
   { id: 7, text: "Cancer" },
-  { id: 8, text: "OTHER" },
+  { id: 8, text: "other" },
 ];
 
 export const REVIEW_AT_CHOICES: Array<OptionsType> = [
@@ -336,7 +336,7 @@ export const DISEASE_STATUS = [
   "EXPIRED",
 ];
 
-export const TEST_TYPE = ["UNK", "ANTIGEN", "RTPCR", "CBNAAT", "TRUENAT"];
+export const TEST_TYPE = ["RTPCR", "UNK", "ANTIGEN", "CBNAAT", "TRUENAT"];
 
 export const VACCINES = [
   "CoviShield",

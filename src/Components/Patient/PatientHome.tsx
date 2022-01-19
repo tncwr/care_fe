@@ -1248,7 +1248,7 @@ export const PatientHome = (props: any) => {
               </div>
               <div className="sm:col-span-1">
                 <div className="text-sm leading-5 font-medium text-gray-500">
-                  Estimated Contact Date
+                  Contact Date
                 </div>
                 <div className="mt-1 text-sm leading-5 text-gray-900">
                   {patientData.estimated_contact_date

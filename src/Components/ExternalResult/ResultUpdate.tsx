@@ -66,8 +66,8 @@ const FormReducer = (state = initialState, action: any) => {
   }
 };
 
-const initialLocalbodies = [{ id: 0, name: "Choose Localbody", number: 0 }];
-const initialWard = [{ id: 0, name: "Choose Ward", number: 0 }];
+const initialLocalbodies = [{ id: 0, name: "Village / Town", number: 0 }];
+const initialWard = [{ id: 0, name: "Choose Street", number: 0 }];
 
 export default function UpdateResult(props: any) {
   const { id } = props;
@@ -262,7 +262,7 @@ export default function UpdateResult(props: any) {
               />
             </div>
             <div data-testid="localbody">
-              <InputLabel id="local_body-label">Localbody*</InputLabel>
+              <InputLabel id="local_body-label">Village / Town*</InputLabel>
               {isLocalbodyLoading ? (
                 <CircularProgress size={20} />
               ) : (
@@ -283,7 +283,7 @@ export default function UpdateResult(props: any) {
             </div>
             <div data-testid="ward-respective-lsgi">
               <InputLabel id="ward-label">
-                Ward/Division of respective LSGI*
+                Street of respective Village / Town*
               </InputLabel>
               {isWardLoading ? (
                 <CircularProgress size={20} />

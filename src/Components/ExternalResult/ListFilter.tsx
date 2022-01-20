@@ -224,14 +224,14 @@ export default function ListFilter(props: any) {
       <div className="font-light text-md mt-2">Filter By:</div>
       <div className="flex flex-wrap gap-2">
         <div className="w-64 flex-none">
-          <span className="text-sm font-semibold">Lsg</span>
+          <span className="text-sm font-semibold">Village / Town</span>
           <AutoCompleteAsyncField
             multiple={true}
             name="local_bodies"
             options={lsgList}
-            label="Local Body"
+            label="Village / Town"
             variant="outlined"
-            placeholder="Select Local Body"
+            placeholder="Select Village / Town"
             loading={loading}
             freeSolo={false}
             value={selectedLsgs}
@@ -246,12 +246,12 @@ export default function ListFilter(props: any) {
       </div>
       <div className="flex flex-wrap gap-2">
         <div className="w-64 flex-none">
-          <span className="text-sm font-semibold">Ward</span>
+          <span className="text-sm font-semibold">Street</span>
           <AutoCompleteAsyncField
             multiple={true}
             name="wards"
             options={filterWards()}
-            label="Ward"
+            label="Street"
             variant="outlined"
             placeholder="Select wards"
             loading={loading}

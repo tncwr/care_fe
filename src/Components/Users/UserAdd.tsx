@@ -54,7 +54,7 @@ interface UserProps {
 const initialStates = [{ id: 0, name: "Choose State *" }];
 const initialDistricts = [{ id: 0, name: "Choose District" }];
 const selectStates = [{ id: 0, name: "Please select your state" }];
-const initialLocalbodies = [{ id: 0, name: "Choose Localbody" }];
+const initialLocalbodies = [{ id: 0, name: "Choose Village / Town" }];
 const selectDistrict = [{ id: 0, name: "Please select your district" }];
 
 const initForm: any = {
@@ -703,7 +703,7 @@ export const UserAdd = (props: UserProps) => {
 
               {showLocalbody && (
                 <div>
-                  <InputLabel>Localbody</InputLabel>
+                  <InputLabel>Village / Town</InputLabel>
                   {isLocalbodyLoading ? (
                     <CircularProgress size={20} />
                   ) : (

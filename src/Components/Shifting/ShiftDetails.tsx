@@ -261,7 +261,7 @@ export default function ShiftDetails(props: { id: string }) {
           {patientData?.estimated_contact_date && (
             <div>
               <span className="font-semibold leading-relaxed">
-                Estimated contact date:{" "}
+                Contact date:{" "}
               </span>
               {moment(patientData?.estimated_contact_date).format("LL")}
             </div>
@@ -314,7 +314,7 @@ export default function ShiftDetails(props: { id: string }) {
           {!!patientData?.number_of_aged_dependents && (
             <div>
               <span className="font-semibold leading-relaxed">
-                Number Of Aged Dependents (Above 60):{" "}
+                Number of Aged Dependents (Above 60):{" "}
               </span>
               {patientData?.number_of_aged_dependents}
             </div>
@@ -322,7 +322,7 @@ export default function ShiftDetails(props: { id: string }) {
           {!!patientData?.number_of_chronic_diseased_dependents && (
             <div>
               <span className="font-semibold leading-relaxed">
-                Number Of Chronic Diseased Dependents:{" "}
+                Number of Chronic Diseased Dependents:{" "}
               </span>
               {patientData?.number_of_chronic_diseased_dependents}
             </div>

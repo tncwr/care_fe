@@ -22,7 +22,7 @@ function useMergeState(initialState: any) {
 const initialStates = [{ id: 0, name: "Choose State *" }];
 const initialDistricts = [{ id: 0, name: "Choose District" }];
 const selectStates = [{ id: 0, name: "Please select your state" }];
-const initialLocalbodies = [{ id: 0, name: "Choose Localbody" }];
+const initialLocalbodies = [{ id: 0, name: "Choose Village / Town" }];
 const selectDistrict = [{ id: 0, name: "Please select your district" }];
 
 function FacillityFilter(props: any) {
@@ -207,7 +207,7 @@ function FacillityFilter(props: any) {
         </div>
 
         <div className="w-64 flex-none">
-          <span className="text-sm font-semibold">Local Body</span>
+          <span className="text-sm font-semibold">Village / Town</span>
           <div>
             {isLocalbodyLoading ? (
               <CircularProgress size={20} />

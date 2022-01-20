@@ -171,8 +171,10 @@ const initialState = {
 const initialStates = [{ id: 0, name: "Choose State *" }];
 const initialDistricts = [{ id: 0, name: "Choose District" }];
 const selectStates = [{ id: 0, name: "Please select your state" }];
-const initialLocalbodies = [{ id: 0, name: "Choose Localbody", number: 0 }];
-const initialWard = [{ id: 0, name: "Choose Ward", number: 0 }];
+const initialLocalbodies = [
+  { id: 0, name: "Choose Village / Town", number: 0 },
+];
+const initialWard = [{ id: 0, name: "Choose Street", number: 0 }];
 const selectDistrict = [{ id: 0, name: "Please select your district" }];
 
 const patientFormReducer = (state = initialState, action: any) => {
@@ -529,14 +531,14 @@ export const PatientRegister = (props: PatientRegisterProps) => {
           return;
         case "local_body":
           if (state.form.nationality === "India" && !state.form[field]) {
-            errors[field] = "Please select local body";
+            errors[field] = "Please select Village / Town";
             if (!error_div) error_div = field;
             invalidForm = true;
           }
           return;
         case "ward":
           if (state.form.nationality === "India" && !state.form[field]) {
-            errors[field] = "Please select ward";
+            errors[field] = "Please select Street";
             if (!error_div) error_div = field;
             invalidForm = true;
           }
@@ -610,7 +612,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
             JSON.parse(state.form.contact_with_suspected_carrier)
           ) {
             if (!state.form[field]) {
-              errors[field] = "Please enter the estimated date of contact";
+              errors[field] = "Please enter the date of contact";
               if (!error_div) error_div = field;
               invalidForm = true;
             }
@@ -1436,7 +1438,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
 
                       <div data-testid="localbody" id="local_body-div">
                         <InputLabel id="local_body-label">
-                          Localbody*
+                          Village / Town*
                         </InputLabel>
                         {isLocalbodyLoading ? (
                           <CircularProgress size={20} />
@@ -1515,7 +1517,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
                   </div>
                   <div data-testid="ward-respective-lsgi" id="ward-div">
                     <InputLabel id="ward-label">
-                      Ward/Division of respective LSGI*
+                      Street of respective Village / Town*
                     </InputLabel>
                     {isWardLoading ? (
                       <CircularProgress size={20} />
@@ -1537,7 +1539,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
                     )}
                   </div>
                   <div id="village-div">
-                    <InputLabel id="name-label">Village</InputLabel>
+                    <InputLabel id="name-label">Address / Landmark</InputLabel>
                     <TextInputField
                       name="village"
                       variant="outlined"
@@ -1698,7 +1700,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
                     <div id="estimated_contact_date-div">
                       <DateInputField
                         fullWidth={true}
-                        label="Estimate date of contact*"
+                        label="Date of contact*"
                         value={state.form.estimated_contact_date}
                         onChange={(date) =>
                           handleDateChange(date, "estimated_contact_date")
@@ -1774,7 +1776,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
                       </div>
                       <div id="date_of_return-div">
                         <InputLabel id="date_of_return-label">
-                          Estimated date of Arrival*
+                          Date of Arrival*
                         </InputLabel>
                         <DateInputField
                           fullWidth={true}
@@ -1792,7 +1794,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
                   )}
                   <div id="number_of_primary_contacts-div">
                     <InputLabel id="number_of_primary_contacts-label">
-                      Number Of Primary Contacts for COVID
+                      Number of Primary Contacts for COVID
                     </InputLabel>
                     <TextInputField
                       name="number_of_primary_contacts"
@@ -1806,7 +1808,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
                   </div>
                   <div id="number_of_secondary_contacts-div">
                     <InputLabel id="number_of_secondary_contacts-label">
-                      Number Of Secondary Contacts for COVID
+                      Number of Secondary Contacts for COVID
                     </InputLabel>
                     <TextInputField
                       name="number_of_secondary_contacts"
@@ -1882,7 +1884,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
                   </div>
                   <div id="number_of_aged_dependents-div">
                     <InputLabel id="number_of_aged_dependents-label">
-                      Number Of Aged Dependents (Above 60)
+                      Number of Aged Dependents (Above 60)
                     </InputLabel>
                     <TextInputField
                       name="number_of_aged_dependents"
@@ -1897,7 +1899,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
 
                   <div id="number_of_chronic_diseased_dependents-div">
                     <InputLabel id="number_of_chronic_diseased_dependents-label">
-                      Number Of Chronic Diseased Dependents
+                      Number of Chronic Diseased Dependents
                     </InputLabel>
                     <TextInputField
                       name="number_of_chronic_diseased_dependents"

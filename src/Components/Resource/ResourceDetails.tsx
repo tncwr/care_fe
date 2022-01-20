@@ -198,7 +198,8 @@ export default function ResourceDetails(props: { id: string }) {
             <div className="mt-4">
               The request will be fulfilled by{" "}
               {data.assigned_facility_object.facility_type?.name}, District{" "}
-              {data.assigned_facility_object.district_type?.name}, LSG
+              {data.assigned_facility_object.district_type?.name}, Village /
+              Town
               {data.assigned_facility_object.local_body_object?.name},
               {data.assigned_facility_object.state_object?.name}
             </div>

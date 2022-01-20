@@ -37,9 +37,9 @@ export const DOWNLOAD_TYPES: Array<String> = [
 ];
 
 export const TEST_TYPE_CHOICES: Array<OptionsType> = [
+  { id: 30, text: "RTPCR" },
   { id: 10, text: "UNK" },
   { id: 20, text: "ANTIGEN" },
-  { id: 30, text: "RTPCR" },
   { id: 40, text: "CBNAAT" },
   { id: 50, text: "TRUENAT" },
 ];
@@ -138,24 +138,38 @@ export const PATIENT_FILTER_ORDER: Array<OptionsType> = [
 ];
 
 export const BED_TYPES: Array<OptionsType> = [
-  { id: 1, text: "Non-Covid Ordinary Beds" },
-  { id: 150, text: "Non-Covid Oxygen beds" },
-  { id: 10, text: "Non-Covid ICU (ICU without ventilator)" },
-  { id: 20, text: "Non-Covid Ventilator (ICU with ventilator)" },
-  { id: 30, text: "Covid Ordinary Beds" },
-  { id: 120, text: "Covid Oxygen beds" },
-  { id: 110, text: "Covid ICU (ICU without ventilator)" },
-  { id: 100, text: "Covid Ventilators (ICU with ventilator)" },
-  { id: 40, text: KASP_STRING + " Ordinary Beds" },
-  { id: 60, text: KASP_STRING + " Oxygen beds" },
-  { id: 50, text: KASP_STRING + " ICU (ICU without ventilator)" },
-  { id: 70, text: KASP_STRING + " ICU (ICU with ventilator)" },
-  { id: 2, text: "Hostel" },
-  { id: 3, text: "Single Room with Attached Bathroom" },
-  { id: 111, text: "Pediatric Covid Ordinary Beds" },
-  { id: 112, text: "Pediatric Covid Oxygen beds" },
-  { id: 113, text: "Pediatric Covid ICU (ICU without ventilator)" },
-  { id: 114, text: "Pediatric Covid Ventilators (ICU with ventilator)" },
+  { id: 30, text: "Adult covid Non O2 Beds" },
+  { id: 120, text: "Adult covid O2 bed" },
+  { id: 110, text: "Adult covid ICU Without ventilator" },
+  { id: 100, text: "Adult covid ICU With ventilator" },
+  { id: 111, text: "Pediatric covid Non O2 Beds" },
+  { id: 112, text: "Pediatric covid O2 beds" },
+  { id: 113, text: "Pediatric covid ICU without ventilator" },
+  { id: 114, text: "Pediatric covid ICU ventilator" },
+  { id: 40, text: "Adult " + KASP_STRING + " Non O2 Beds" },
+  { id: 60, text: "Adult " + KASP_STRING + " O2 beds" },
+  { id: 50, text: "Adult " + KASP_STRING + " ICU Without ventilator" },
+  { id: 70, text: "Adult " + KASP_STRING + " ICU With ventilator" },
+  { id: 45, text: "Pediatric " + KASP_STRING + " Non O2 Beds" },
+  { id: 65, text: "Pediatric " + KASP_STRING + " O2 beds" },
+  { id: 55, text: "Pediatric " + KASP_STRING + " ICU Without ventilator" },
+  { id: 75, text: "Pediatric " + KASP_STRING + " ICU With ventilator" },
+  { id: 3, text: "Casulatily / Emergency Ward NON O2 BED" },
+  { id: 13, text: "Casulatily / Emergency Ward O2 BED" },
+  { id: 23, text: "Casulatily / Emergency Ward ICU Without ventilator" },
+  { id: 33, text: "Casulatily / Emergency Ward ICU With ventilator" },
+  { id: 2, text: "Makeshift Arrangement Ward NON O2 BED" },
+  { id: 12, text: "Makeshift Arrangement Ward O2 BED" },
+  { id: 22, text: "Makeshift Arrangement Ward ICU Without ventilator" },
+  { id: 32, text: "Makeshift Arrangement Ward ICU With ventilator" },
+  { id: 1, text: "Adult Non covid NON O2 BED" },
+  { id: 150, text: "Adult Non covid O2 BED" },
+  { id: 10, text: "Adult Non covid ICU Without ventilator" },
+  { id: 20, text: "Adult Non covid ICU With ventilator" },
+  { id: 5, text: "Pediatric Non covid NON O2 BED" },
+  { id: 155, text: "Pediatric Non covid O2 BED" },
+  { id: 15, text: "Pediatric Non covid ICU Without ventilator" },
+  { id: 25, text: "Pediatric Non covid ICU With ventilator" },
 ];
 
 export const DOCTOR_SPECIALIZATION: Array<OptionsType> = [
@@ -170,11 +184,11 @@ export const MEDICAL_HISTORY_CHOICES: Array<OptionsType> = [
   { id: 1, text: "NO" },
   { id: 2, text: "Diabetes" },
   { id: 3, text: "Heart Disease" },
-  { id: 4, text: "HyperTension" },
+  { id: 4, text: "Hypertension" },
   { id: 5, text: "Kidney Diseases" },
   { id: 6, text: "Lung Diseases/Asthma" },
   { id: 7, text: "Cancer" },
-  { id: 8, text: "OTHER" },
+  { id: 8, text: "other" },
 ];
 
 export const REVIEW_AT_CHOICES: Array<OptionsType> = [
@@ -336,7 +350,7 @@ export const DISEASE_STATUS = [
   "EXPIRED",
 ];
 
-export const TEST_TYPE = ["UNK", "ANTIGEN", "RTPCR", "CBNAAT", "TRUENAT"];
+export const TEST_TYPE = ["RTPCR", "UNK", "ANTIGEN", "CBNAAT", "TRUENAT"];
 
 export const VACCINES = [
   "CoviShield",

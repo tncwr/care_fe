@@ -442,7 +442,7 @@ export default function PatientFilterV2(props: any) {
       <div className="font-light text-md mt-2">Filter By:</div>
       <div className="flex flex-wrap gap-2">
         <div className="w-64 flex-none">
-          <span className="text-sm font-semibold">LSG body</span>
+          <span className="text-sm font-semibold">Village / Town</span>
           <div className="">
             <AutoCompleteAsyncField
               name="lsgBody"
@@ -453,10 +453,10 @@ export default function PatientFilterV2(props: any) {
               onSearch={handleLsgSearch}
               onChange={(e: object, value: any) => handleLsgChange(value)}
               loading={isLsgLoading}
-              placeholder="Search by LSG body name"
+              placeholder="Search by Village / Town name"
               noOptionsText={
                 hasLsgSearchText
-                  ? "No LSG body found, please try again"
+                  ? "No Village / Town found, please try again"
                   : "Start typing to begin search"
               }
               renderOption={(option: any) => <div>{option.name}</div>}

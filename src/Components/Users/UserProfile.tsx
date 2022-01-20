@@ -302,7 +302,7 @@ export default function UserProfile() {
                 Personal Information
               </h3>
               <p className="mt-1 text-sm leading-5 text-gray-600">
-                Local Body, District and State are Non Editable Settings.
+                Village / Town, District and State are Non Editable Settings.
               </p>
               <button
                 onClick={(_) => setShowEdit(!showEdit)}
@@ -407,7 +407,7 @@ export default function UserProfile() {
                   </div>
                   <div className="sm:col-span-1">
                     <dt className="text-sm leading-5 font-medium text-gray-500">
-                      Local Body
+                      Village / Town
                     </dt>
                     <dd className="mt-1 text-sm leading-5 text-gray-900">
                       {details.local_body_object?.name || "-"}

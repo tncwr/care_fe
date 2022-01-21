@@ -62,7 +62,7 @@ const PageTitle = loadable(() => import("../Common/PageTitle"));
 const debounce = require("lodash.debounce");
 
 const placesList = countryList.concat(
-  statesList.filter((i: string) => i !== "Kerala")
+  statesList.filter((i: string) => i !== "Tamil Nadu")
 );
 
 interface PatientRegisterProps extends PatientModel {
@@ -480,7 +480,14 @@ export const PatientRegister = (props: PatientRegisterProps) => {
       setIsStateLoading(true);
       const statesRes = await dispatchAction(getStates());
       if (!status.aborted && statesRes.data.results) {
-        setStates([...initialStates, ...statesRes.data.results]);
+        const initialStateVal = statesRes.data.results.filter(
+          (i: any) => i.name == "Tamil Nadu"
+        );
+        const stateVal = statesRes.data.results.filter(
+          (i: any) => i.name !== "Tamil Nadu"
+        );
+        setStates([...initialStateVal, ...stateVal]);
+        fetchDistricts(String(initialStateVal[0].id));
       }
       setIsStateLoading(false);
     },
@@ -1617,7 +1624,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
                       </RadioGroup>
                     </div>
                   )}
-                  <div id="is_migrant_worker-div">
+                  {/* <div id="is_migrant_worker-div">
                     <InputLabel id="is_migrant_worker">
                       Is a Guest workers?
                     </InputLabel>
@@ -1641,7 +1648,7 @@ export const PatientRegister = (props: PatientRegisterProps) => {
                         />
                       </Box>
                     </RadioGroup>
-                  </div>
+                  </div> */}
 
                   <div id="contact_with_confirmed_carrier-div">
                     <InputLabel id="contact_with_confirmed_carrier">
